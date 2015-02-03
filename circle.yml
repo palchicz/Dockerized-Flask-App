@@ -11,7 +11,7 @@ test:
     override:
         - docker run -d -p 80:80 zpalchick/flask-docker-workflow; sleep 10
         - curl --retry 10 --retry-delay 5 -v http://localhost:80
-        - docker run zpalchick/flask-docker-workflow python3 app/tests.py
+        - docker run zpalchick/flask-docker-workflow nosetests app/
 
 deployment:
     hub:
