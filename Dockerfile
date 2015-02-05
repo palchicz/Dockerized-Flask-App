@@ -1,13 +1,13 @@
 # start with a base image
 FROM ubuntu:14.10
-MAINTAINER Real Python <info@realpython.com>
+MAINTAINER Zach Palchick
 
 # install dependencies
 RUN apt-get update
 RUN apt-get install -y nginx
 RUN apt-get install -y supervisor
 RUN apt-get install -y python3-pip
-RUN pip3 install uwsgi flask
+RUN pip3 install uwsgi flask nose
 
 # update working directories
 ADD ./app /app

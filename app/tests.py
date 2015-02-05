@@ -9,13 +9,13 @@ class MainTestCase(unittest.TestCase):
         response = tester.get('/data')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content_type, 'application/json')
-        self.assertIn('Seattle', response.data)
+        self.assertIn('Seattle', response.data.decode())
 
     def test_index(self):
         tester = app.test_client(self)
         response = tester.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, 'Flask is running on Docker!')
+        self.assertEqual(response.data.decode(), 'Flask is running on Docker!')
 
 
 if __name__ == '__main__':
