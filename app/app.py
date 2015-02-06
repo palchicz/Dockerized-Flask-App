@@ -1,8 +1,12 @@
 import os
 from flask import Flask, jsonify
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('config.Config')
+db = SQLAlchemy(app)
+
+from models import City
 
 
 @app.route('/')
@@ -12,11 +16,8 @@ def index():
 
 @app.route('/data')
 def cities():
-    data = {
-        "cities": ["Seattle", "San Francisco", "Chicago",
-                   "New York", "Denver", "San Diego", "Tokyo"]
-    }
-    return jsonify(data)
+    data = City.query.all()
+    return jsonify(cities = [city.name for city in data])
 
 
 if __name__ == '__main__':
