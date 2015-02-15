@@ -7,7 +7,6 @@ class MainTestCase(unittest.TestCase):
 
     def setUp(self):
         self.tester = app.test_client(self)
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
         db.create_all()
         db.session.add(City('Seattle'))
         db.session.commit()

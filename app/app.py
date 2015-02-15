@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config.from_object('config.Config')
+app.config.from_object(os.environ['APP_SETTINGS'])
 db = SQLAlchemy(app)
 
 from models import City
