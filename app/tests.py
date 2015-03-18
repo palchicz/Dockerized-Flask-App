@@ -15,7 +15,7 @@ class MainTestCase(unittest.TestCase):
         response = self.tester.get('/data')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content_type, 'application/json')
-        self.assertIn('Seattle', response.data.decode())
+        self.assertIn('SEATTLE', response.data.decode())
 
     def test_index(self):
         response = self.tester.get('/')
