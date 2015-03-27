@@ -17,8 +17,7 @@ def index():
 @app.route('/data')
 def cities():
     data = City.query.all()
-    return jsonify(cities = ['{}!'.format(city.name.upper())
-        for city in data])
+    return jsonify(cities = [city.name for city in data])
 
 
 if __name__ == '__main__':
